@@ -74,3 +74,7 @@
 .menu li {
   padding: 8px;
 }
+
+.menu li:hover {
+  color: blueviolet;
+}
