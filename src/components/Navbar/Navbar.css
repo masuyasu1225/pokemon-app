@@ -1,41 +1,17 @@
 .navbar-container {
-  background-color: #d69a3f;
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 10px; /* 適宜調整してください */
-}
-
-.navbar-container nav {
-  background-color: #d69a3f;
-  color: white;
-  height: 65px;
-  font-weight: 600;
-  font-size: 23px;
+  position: relative;
   display: flex;
-  text-align: center;
   justify-content: center;
   align-items: center;
-}
-
-.navbar-container button {
-  background-color: #d69a3f;
-  outline-color: white;
+  padding: 20px;
+  background-color: orange;
   color: white;
-  margin: 0 0 0 auto;
-  height: 65px;
-  width: 65px;
-  font-weight: 600;
-  font-size: 23px;
 }
 
-.navbar-container button:hover {
-  opacity: 0.5;
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hamburger-menu {
@@ -47,6 +23,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .line {
@@ -70,6 +50,22 @@
 }
 
 .menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: orange;
+  display: none;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.open + .menu,
+.menu:hover {
+  display: block;
+}
+
+.menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
