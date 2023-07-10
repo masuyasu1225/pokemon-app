@@ -52,7 +52,7 @@
 .line {
   width: 25px;
   height: 3px;
-  background-color: black;
+  background-color: white;
   margin-bottom: 4px;
   transition: transform 0.3s ease;
 }
