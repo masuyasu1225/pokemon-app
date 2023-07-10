@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card/Card";
-import Nabvar from "./components/Navbar/Nabvar";
+import Navbar from "./components/Navbar/Navbar";
 import { getAllPokemon, getPokemon } from "./utils/pokemon.js";
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <Nabvar />
+      <Navbar />
       <div className="App">
         {loading ? (
           <h1>ロード中・・・</h1>

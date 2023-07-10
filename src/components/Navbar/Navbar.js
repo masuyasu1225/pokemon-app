@@ -1,8 +1,8 @@
 import React from "react";
 import "./Navbar.css";
 
-const Nabvar = () => {
+const Navbar = () => {
   return <nav>ポケモン図鑑</nav>;
 };
 
-export default Nabvar;
+export default Navbar;
