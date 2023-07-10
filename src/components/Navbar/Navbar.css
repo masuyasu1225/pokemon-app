@@ -1,10 +1,80 @@
-nav {
+.navbar-container {
+  background-color: #d69a3f;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px; /* 適宜調整してください */
+}
+
+.navbar-container nav {
   background-color: #d69a3f;
   color: white;
   height: 65px;
   font-weight: 600;
   font-size: 23px;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.navbar-container button {
+  background-color: #d69a3f;
+  outline-color: white;
+  color: white;
+  margin: 0 0 0 auto;
+  height: 65px;
+  width: 65px;
+  font-weight: 600;
+  font-size: 23px;
+}
+
+.navbar-container button:hover {
+  opacity: 0.5;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+}
+
+.open .line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.open .line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 8px;
 }
