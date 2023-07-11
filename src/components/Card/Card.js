@@ -29,9 +29,17 @@ function Card({ pokemon }) {
           <p className="title">高さ：{pokemon.height}m</p>
         </div>
         <div className="cardData">
-          <p className="title">
+          {/* <p className="title">
             アビリティ：{pokemon.abilities[0].ability.name}
-          </p>
+            {pokemon.abilities[0].ability.name}
+          </p> */}
+          {pokemon.abilities.map((ability, index) => {
+            return (
+              <div key={index}>
+                <span className="ability">{ability.ability.name}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
