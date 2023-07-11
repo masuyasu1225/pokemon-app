@@ -10,10 +10,10 @@ function Card({ pokemon }) {
       <h3 className="cardName">{pokemon.nameJP}</h3>
       <div className="cardTypes">
         <div>タイプ</div>
-        {pokemon.types.map((type) => {
+        {pokemon.typesJP.map((type, index) => {
           return (
-            <div key={type.type.name}>
-              <span className="typeName">{type.type.name}</span>
+            <div key={index}>
+              <span className="typeName">{type}</span>
             </div>
           );
         })}

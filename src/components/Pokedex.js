@@ -40,6 +40,20 @@ function Pokedex() {
         // 日本語名を追加
         pokemonRecord.nameJP = nameJP;
 
+        // タイプの日本語名を取得
+        let typesJP = await Promise.all(
+          pokemonRecord.types.map(async (type) => {
+            let typeDetail = await getPokemon(type.type.url);
+            let nameJP = typeDetail.names.find(
+              (name) => name.language.name === "ja"
+            ).name;
+            return nameJP;
+          })
+        );
+
+        // タイプの日本語名を追加
+        pokemonRecord.typesJP = typesJP;
+
         return pokemonRecord;
       })
     );
