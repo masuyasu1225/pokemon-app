@@ -15,3 +15,16 @@ export const getPokemon = (url) => {
       });
   });
 };
+export const getPokemonJPName = (speciesUrl) => {
+  return new Promise((resolve, reject) => {
+    fetch(speciesUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        // 日本語名を抽出
+        let jaName = data.names.find(
+          (name) => name.language.name === "ja"
+        ).name;
+        resolve(jaName);
+      });
+  });
+};

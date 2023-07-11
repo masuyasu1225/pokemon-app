@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Pokedex.css";
 import Card from "./Card/Card";
-import { getAllPokemon, getPokemon } from "../utils/pokemon.js";
+import {
+  getAllPokemon,
+  getPokemon,
+  getPokemonJPName,
+} from "../utils/pokemon.js";
 
 function Pokedex() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
@@ -26,16 +30,21 @@ function Pokedex() {
 
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
-      data.map((pokemon) => {
-        // console.log(pokemon);
-        let pokemonRecord = getPokemon(pokemon.url);
+      data.map(async (pokemon) => {
+        // 各ポケモンの詳細データを取得
+        let pokemonRecord = await getPokemon(pokemon.url);
+
+        // 日本語名を取得
+        let nameJP = await getPokemonJPName(pokemonRecord.species.url);
+
+        // 日本語名を追加
+        pokemonRecord.nameJP = nameJP;
+
         return pokemonRecord;
       })
     );
     setPokemonData(_pokemonData);
   };
-
-  // console.log(pokemonData);
 
   const handleNextPage = async () => {
     setLoading(true);
@@ -65,7 +74,13 @@ function Pokedex() {
           <>
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon, i) => {
-                return <Card key={i} pokemon={pokemon} />;
+                return (
+                  <Card
+                    key={i}
+                    pokemon={pokemon}
+                    pokemonNameJP={pokemon.nameJP}
+                  />
+                );
               })}
             </div>
             <div className="btn">

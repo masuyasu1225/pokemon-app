@@ -7,7 +7,7 @@ function Card({ pokemon }) {
       <div className="cardImg">
         <img src={pokemon.sprites.front_default} alt="" />
       </div>
-      <h3 className="cardName">{pokemon.name}</h3>
+      <h3 className="cardName">{pokemon.nameJP}</h3>
       <div className="cardTypes">
         <div>タイプ</div>
         {pokemon.types.map((type) => {
@@ -23,10 +23,10 @@ function Card({ pokemon }) {
           <p className="Number">番号：{pokemon.id}</p>
         </div>
         <div className="cardData">
-          <p className="title">重さ：{pokemon.weight}</p>
+          <p className="title">重さ：{pokemon.weight / 10.0}kg</p>
         </div>
         <div className="cardData">
-          <p className="title">高さ：{pokemon.weight}</p>
+          <p className="title">高さ：{pokemon.height}m</p>
         </div>
         <div className="cardData">
           <p className="title">
