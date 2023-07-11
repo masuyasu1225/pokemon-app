@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Pokedex.css";
 import Card from "./Card/Card";
 import {
+  getAbilityJPName,
   getAllPokemon,
   getPokemon,
   getPokemonJPName,
@@ -53,6 +54,21 @@ function Pokedex() {
 
         // タイプの日本語名を追加
         pokemonRecord.typesJP = typesJP;
+
+        // アビリティの日本語名を取得
+        let abilitiesJP = await Promise.all(
+          pokemonRecord.abilities.map(async (ability) => {
+            let abilityNameJP = await getAbilityJPName(ability.ability.url);
+            return {
+              ...ability,
+              ability: {
+                ...ability.ability,
+                name: abilityNameJP,
+              },
+            };
+          })
+        );
+        pokemonRecord.abilities = abilitiesJP;
 
         return pokemonRecord;
       })

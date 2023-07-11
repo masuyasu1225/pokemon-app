@@ -5,6 +5,7 @@ export const getAllPokemon = (url) => {
       .then((data) => resolve(data));
   });
 };
+
 export const getPokemon = (url) => {
   return new Promise((resolve, reject) => {
     fetch(url)
@@ -15,6 +16,7 @@ export const getPokemon = (url) => {
       });
   });
 };
+
 export const getPokemonJPName = (speciesUrl) => {
   return new Promise((resolve, reject) => {
     fetch(speciesUrl)
@@ -25,6 +27,19 @@ export const getPokemonJPName = (speciesUrl) => {
           (name) => name.language.name === "ja"
         ).name;
         resolve(jaName);
+      });
+  });
+};
+
+export const getAbilityJPName = (url) => {
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        let jpName = data.names.find(
+          (name) => name.language.name === "ja"
+        ).name;
+        resolve(jpName);
       });
   });
 };
