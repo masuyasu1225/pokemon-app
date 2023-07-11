@@ -1,7 +1,8 @@
 .card {
-  width: 290px;
-  box-shadow: 0px 0px 22px 8px #777777;
-  border-radius: 10px;
+  width: 380px;
+  height: auto;
+  box-shadow: 2px 2px 4px 2px #777777;
+  border-radius: 5px;
   background-color: white;
 }
 
@@ -13,5 +14,6 @@
 }
 
 .cardInfo {
-  text-align: center;
+  margin-left: 20px;
+  text-align: left;
 }
