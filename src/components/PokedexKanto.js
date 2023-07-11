@@ -3,8 +3,8 @@ import "./Pokedex.css";
 import Card from "./Card/Card";
 import { getAllPokemon, getPokemon } from "../utils/pokemon.js";
 
-function Pokedex() {
-  const initialURL = "https://pokeapi.co/api/v2/pokemon";
+function PokedexKanto() {
+  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=151";
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
   const [nextURL, setNextURL] = useState("");
@@ -79,4 +79,4 @@ function Pokedex() {
   );
 }
 
-export default Pokedex;
+export default PokedexKanto;
