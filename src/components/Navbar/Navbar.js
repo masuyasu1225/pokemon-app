@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="menu">
           <ul>
-            <li>メニュー1</li>
+            <li>
+              <Link to="/pokedex_kanto">カントー地方</Link>
+            </li>
             <li>メニュー2</li>
             <li>メニュー3</li>
           </ul>
