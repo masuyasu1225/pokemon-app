@@ -12,6 +12,12 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  text-decoration: none;
+}
+
+.navbar-title:visited {
+  color: white;
+  text-decoration: none;
 }
 
 .hamburger-menu {
@@ -76,5 +82,20 @@
 }
 
 .menu li:hover {
+  color: blueviolet;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-link:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-link:hover,
+.navbar-link:active {
   color: blueviolet;
 }

@@ -11,7 +11,9 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <nav className="navbar-title">ポケモン図鑑</nav>
+      <Link className="navbar-title" to="/">
+        ポケモン図鑑
+      </Link>
       <button
         className={`hamburger-menu ${isOpen ? "open" : ""}`}
         onClick={toggleMenu}
@@ -24,7 +26,9 @@ const Navbar = () => {
         <div className="menu">
           <ul>
             <li>
-              <Link to="/pokedex_kanto">カントー地方</Link>
+              <Link className="navbar-link" to="/pokedex_kanto">
+                カントー地方
+              </Link>
             </li>
             <li>メニュー2</li>
             <li>メニュー3</li>
