@@ -30,8 +30,21 @@ const Navbar = () => {
                 カントー地方
               </Link>
             </li>
-            <li>メニュー2</li>
-            <li>メニュー3</li>
+            <li>
+              <Link className="navbar-link" to="/pokedex_johto">
+                ジョウト地方
+              </Link>
+            </li>
+            <li>
+              <Link className="navbar-link" to="/pokedex_hoenn">
+                ホウエン地方
+              </Link>
+            </li>
+            <li>
+              <Link className="navbar-link" to="/pokedex_sinnoh">
+                シンオウ地方
+              </Link>
+            </li>
           </ul>
         </div>
       )}

@@ -9,7 +9,7 @@ import {
 } from "../utils/pokemon.js";
 
 function Pokedex() {
-  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=151";
+  const initialURL = "https://pokeapi.co/api/v2/pokemon?offset=386&limit=107";
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
   const [nextURL, setNextURL] = useState("");
