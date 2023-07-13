@@ -4,7 +4,9 @@ import {
   getAbilityJPName,
   getPokemon,
   getPokemonJPName,
+  getStatJPName,
 } from "../utils/pokemon.js";
+import "./PokemonStatus.css";
 
 const PokemonStatus = () => {
   const [pokemon, setPokemon] = useState(null);
@@ -46,6 +48,21 @@ const PokemonStatus = () => {
       );
       pokemonRecord.abilities = abilitiesJP;
 
+      // ステータス名の日本語名を取得
+      const statsJP = await Promise.all(
+        pokemonRecord.stats.map(async (stat) => {
+          const statNameJP = await getStatJPName(stat.stat.url);
+          return {
+            ...stat,
+            stat: {
+              ...stat.stat,
+              name: statNameJP,
+            },
+          };
+        })
+      );
+      pokemonRecord.stats = statsJP;
+
       setPokemon(pokemonRecord);
     };
 
@@ -75,6 +92,22 @@ const PokemonStatus = () => {
       <div>
         特性：
         {pokemon.abilities.map((ability) => ability.ability.name).join(" / ")}
+      </div>
+      <div className="statusTable">
+        種族値：
+        {pokemon.stats.map((stat, index) => (
+          <div key={index}>
+            <table>
+              <tbody>
+                <tr>
+                  <th>{stat.stat.name}</th>
+                  <td>{stat.base_stat}</td>
+                </tr>
+              </tbody>
+            </table>
+            {/* <p>努力値: {stat.effort}</p> */}
+          </div>
+        ))}
       </div>
     </div>
   );
