@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: orange;
+  background-color: lightcoral;
   color: white;
 }
 
@@ -59,7 +59,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: orange;
+  background-color: lightcoral;
   display: none;
   padding: 10px;
   border-radius: 4px;

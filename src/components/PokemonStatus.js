@@ -53,7 +53,7 @@ const PokemonStatus = () => {
   }, [pokemonId]);
 
   if (!pokemon) {
-    return <div>Loading...</div>;
+    return <div>ロード中・・・</div>;
   }
 
   return (
