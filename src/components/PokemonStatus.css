@@ -1,0 +1,19 @@
+.statusTable {
+  width: 80%;
+  margin: 0 auto; /* テーブルを画面中央に配置 */
+  border-collapse: collapse; /* セルのボーダーを1pxにまとめる */
+}
+
+.statusTable th,
+.statusTable td {
+  border: 1px solid #000000; /* ボーダーを黒色1pxで設定 */
+  padding: 10px; /* パディングを10pxに設定 */
+}
+
+.statusTable th {
+  background-color: #f0f0f0; /* ヘッダーの背景色を設定 */
+}
+
+.statusTable tr:nth-child(even) {
+  background-color: #f8f8f8; /* 偶数行の背景色を設定 */
+}

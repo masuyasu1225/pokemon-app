@@ -23,6 +23,7 @@ export const getPokemonJPName = (speciesUrl) => {
       .then((res) => res.json())
       .then((data) => {
         // 日本語名を抽出
+        console.log(data); // デバッグのための出力
         let jaName = data.names.find(
           (name) => name.language.name === "ja"
         ).name;
@@ -39,6 +40,20 @@ export const getAbilityJPName = (url) => {
         let jpName = data.names.find(
           (name) => name.language.name === "ja"
         ).name;
+        resolve(jpName);
+      });
+  });
+};
+
+export const getStatJPName = (statUrl) => {
+  return new Promise((resolve, reject) => {
+    fetch(statUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        let jpName = data.names.find(
+          (name) =>
+            name.language.name === "ja-Hrkt" || name.language.name === "ja"
+        )?.name;
         resolve(jpName);
       });
   });
