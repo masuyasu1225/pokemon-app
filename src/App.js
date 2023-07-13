@@ -7,6 +7,7 @@ import PokedexKanto from "./components/PokedexKanto";
 import PokedexJohto from "./components/PokedexJohto";
 import PokedexHoenn from "./components/PokedexHoenn";
 import PokedexSinnoh from "./components/PokedexSinnoh";
+import PokemonStatus from "./components/PokemonStatus";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/pokedex_johto" element={<PokedexJohto />}></Route>
         <Route path="/pokedex_hoenn" element={<PokedexHoenn />}></Route>
         <Route path="/pokedex_sinnoh" element={<PokedexSinnoh />}></Route>
+        <Route path="/pokemon/:pokemonId" element={<PokemonStatus />}></Route>
       </Routes>
     </Router>
   );

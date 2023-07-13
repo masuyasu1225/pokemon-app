@@ -1,9 +1,11 @@
 import React from "react";
 import "./Card.css";
+import { useNavigate } from "react-router-dom";
 
 function Card({ pokemon }) {
+  const navigate = useNavigate();
   return (
-    <div className="card">
+    <div className="card" onClick={() => navigate(`/pokemon/${pokemon.id}`)}>
       <div className="cardImg">
         <img src={pokemon.sprites.front_default} alt="" />
       </div>
