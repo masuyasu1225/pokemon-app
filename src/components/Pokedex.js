@@ -55,7 +55,7 @@ function Pokedex() {
         // タイプの日本語名を追加
         pokemonRecord.typesJP = typesJP;
 
-        // アビリティの日本語名を取得
+        // 特性の日本語名を取得
         let abilitiesJP = await Promise.all(
           pokemonRecord.abilities.map(async (ability) => {
             let abilityNameJP = await getAbilityJPName(ability.ability.url);
