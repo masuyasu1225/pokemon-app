@@ -1,19 +1,55 @@
-.statusTable {
+.pokemonStatus {
   width: 80%;
-  margin: 0 auto; /* テーブルを画面中央に配置 */
-  border-collapse: collapse; /* セルのボーダーを1pxにまとめる */
+  margin: 2rem auto;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.cardImg {
+  display: flex;
+  justify-content: center;
+}
+
+.cardImg img {
+  width: 200px;
+  height: 200px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.cardData {
+  display: block;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.statusTable {
+  margin-top: 1.5rem;
+}
+
+.statusTable table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .statusTable th,
 .statusTable td {
-  border: 1px solid #000000; /* ボーダーを黒色1pxで設定 */
-  padding: 10px; /* パディングを10pxに設定 */
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 40px;
 }
 
 .statusTable th {
-  background-color: #f0f0f0; /* ヘッダーの背景色を設定 */
-}
-
-.statusTable tr:nth-child(even) {
-  background-color: #f8f8f8; /* 偶数行の背景色を設定 */
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
 }

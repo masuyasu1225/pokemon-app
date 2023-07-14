@@ -74,7 +74,7 @@ const PokemonStatus = () => {
   }
 
   return (
-    <div>
+    <div className="pokemonStatus">
       <div className="cardImg">
         <img src={pokemon.sprites.front_default} alt="" />
       </div>
@@ -82,32 +82,29 @@ const PokemonStatus = () => {
       <div>タイプ：{pokemon.typesJP.join(" / ")}</div>
       <div className="cardData">
         <p className="Number">番号：{pokemon.id}</p>
-      </div>
-      <div className="cardData">
         <p className="title">重さ：{pokemon.weight / 10.0}kg</p>
-      </div>
-      <div className="cardData">
         <p className="title">高さ：{pokemon.height}m</p>
       </div>
-      <div>
+      <div style={{ textAlign: "left" }}>
         特性：
         {pokemon.abilities.map((ability) => ability.ability.name).join(" / ")}
       </div>
       <div className="statusTable">
-        種族値：
-        {pokemon.stats.map((stat, index) => (
-          <div key={index}>
-            <table>
-              <tbody>
-                <tr>
-                  <th>{stat.stat.name}</th>
-                  <td>{stat.base_stat}</td>
-                </tr>
-              </tbody>
-            </table>
-            {/* <p>努力値: {stat.effort}</p> */}
-          </div>
-        ))}
+        <div>
+          種族値：
+          {pokemon.stats.map((stat, index) => (
+            <div key={index}>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>{stat.stat.name}</th>
+                    <td>{stat.base_stat}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
