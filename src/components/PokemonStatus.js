@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   getAbilityJPName,
   getPokemon,
@@ -106,6 +106,20 @@ const PokemonStatus = () => {
           ))}
         </div>
       </div>
+      {pokemonId < 898 && ( // <-- 898はポケモンの図鑑の最大数です。この数字は最新の図鑑に合わせて変更してください。
+        <>
+          <div className="prevLink">
+            <Link to={`/pokemon/${parseInt(pokemonId, 10) - 1}`}>
+              前のポケモンへ
+            </Link>
+          </div>
+          <div className="nextLink">
+            <Link to={`/pokemon/${parseInt(pokemonId, 10) + 1}`}>
+              次のポケモンへ
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 };
