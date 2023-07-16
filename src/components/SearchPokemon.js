@@ -9,7 +9,7 @@ import {
 } from "../utils/pokemon.js";
 
 function SearchPokemon() {
-  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=1000";
+  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=100";
   // const [initialURL, setInitialURL] = useState("");
   const [loading, setLoading] = useState(false);
   const [pokemonData, setPokemonData] = useState([]);
@@ -19,6 +19,26 @@ function SearchPokemon() {
   const [searchNumber, setSearchNumber] = useState("");
   const [searchType, setSearchType] = useState({});
   const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
+  const types = [
+    "ノーマル",
+    "ほのお",
+    "みず",
+    "くさ",
+    "でんき",
+    "こおり",
+    "かくとう",
+    "どく",
+    "じめん",
+    "ひこう",
+    "エスパー",
+    "むし",
+    "いわ",
+    "ゴースト",
+    "ドラゴン",
+    "あく",
+    "はがね",
+    "フェアリー",
+  ];
 
   useEffect(() => {
     // isSearchButtonClickedがtrueの時のみ、検索を実行します
@@ -105,12 +125,13 @@ function SearchPokemon() {
       }
 
       // タイプでフィルタリング
-      if (
-        searchType &&
-        Object.keys(searchType).length !== 0 &&
-        !pokemon.typesJP.includes(searchType)
-      ) {
-        return false;
+      if (searchType && Object.keys(searchType).length !== 0) {
+        // 選択された各タイプがポケモンのタイプに含まれているかチェックします
+        for (let type in searchType) {
+          if (searchType[type] && !pokemon.typesJP.includes(type)) {
+            return false;
+          }
+        }
       }
 
       return true;
@@ -174,22 +195,16 @@ function SearchPokemon() {
             placeholder="番号を入力"
             onChange={(e) => handleInputChange(e, setSearchNumber)}
           />
-          <label>
-            <input
-              type="checkbox"
-              name="Fire"
-              onChange={handleCheckboxChange}
-            />
-            Fire
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Water"
-              onChange={handleCheckboxChange}
-            />
-            Water
-          </label>
+          {types.map((type) => (
+            <label key={type}>
+              <input
+                type="checkbox"
+                name={type}
+                onChange={handleCheckboxChange}
+              />
+              {type}
+            </label>
+          ))}
           <button onClick={handleSearch}>検索</button>
         </div>
         {loading ? (
