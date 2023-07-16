@@ -46,6 +46,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link className="navbar-link" to="/pokedex_unova">
+                イッシュ地方
+              </Link>
+            </li>
+            <li>
               <Link className="navbar-link" to="/search_pokemon">
                 ポケモン検索
               </Link>
