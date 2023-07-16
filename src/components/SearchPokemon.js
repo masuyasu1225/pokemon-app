@@ -9,22 +9,28 @@ import {
 } from "../utils/pokemon.js";
 
 function SearchPokemon() {
-  const initialURL = "https://pokeapi.co/api/v2/pokemon";
-  const [loading, setLoading] = useState(true);
+  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=1000";
+  // const [initialURL, setInitialURL] = useState("");
+  const [loading, setLoading] = useState(false);
   const [pokemonData, setPokemonData] = useState([]);
   const [nextURL, setNextURL] = useState("");
   const [prevURL, setPrevURL] = useState("");
   const [searchName, setSearchName] = useState("");
   const [searchNumber, setSearchNumber] = useState("");
   const [searchType, setSearchType] = useState({});
+  const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
 
   useEffect(() => {
-    fetchPokemonData();
-  }, [searchName, searchNumber, searchType]);
+    // isSearchButtonClickedがtrueの時のみ、検索を実行します
+    if (isSearchButtonClicked) {
+      setIsSearchButtonClicked(false); // 検索後は、isSearchButtonClickedを再びfalseに設定します
+    }
+  }, [isSearchButtonClicked]); // 依存配列にisSearchButtonClickedを追加します
 
   const fetchPokemonData = async () => {
     setLoading(true);
     //全てのポケモンデータを取得
+    // setInitialURL("https://pokeapi.co/api/v2/pokemon/?limit=1000");
     let res = await getAllPokemon(initialURL);
     //各ポケモンの詳細なデータを取得
     await loadPokemon(res.results);
@@ -116,29 +122,31 @@ function SearchPokemon() {
   };
   console.log("pokemonData: ", pokemonData);
 
-  const handleNextPage = async () => {
-    setLoading(true);
-    let data = await getAllPokemon(nextURL);
-    await loadPokemon(data.results);
-    setNextURL(data.next);
-    setPrevURL(data.previous);
-    setLoading(false);
-  };
+  // const handleNextPage = async () => {
+  //   setLoading(true);
+  //   let data = await getAllPokemon(nextURL);
+  //   await loadPokemon(data.results);
+  //   setNextURL(data.next);
+  //   setPrevURL(data.previous);
+  //   setLoading(false);
+  // };
 
-  const handlePrevPage = async () => {
-    if (!prevURL) return;
+  // const handlePrevPage = async () => {
+  //   if (!prevURL) return;
 
-    setLoading(true);
-    let data = await getAllPokemon(prevURL);
-    await loadPokemon(data.results);
-    setNextURL(data.next);
-    setPrevURL(data.previous);
-    setLoading(false);
-  };
+  //   setLoading(true);
+  //   let data = await getAllPokemon(prevURL);
+  //   await loadPokemon(data.results);
+  //   // setNextURL(data.next);
+  //   // setPrevURL(data.previous);
+  //   setLoading(false);
+  // };
 
   const handleSearch = () => {
     // Fetch all pokemon data again
     fetchPokemonData();
+    // handleSearch関数内で、isSearchButtonClickedをtrueに設定します
+    setIsSearchButtonClicked(true);
   };
 
   const handleInputChange = (event, setSearchFunc) => {
@@ -199,10 +207,10 @@ function SearchPokemon() {
                 );
               })}
             </div>
-            <div className="btn">
+            {/* <div className="btn">
               <button onClick={handlePrevPage}>前へ</button>
               <button onClick={handleNextPage}>次へ</button>
-            </div>
+            </div> */}
           </>
         )}
       </div>
